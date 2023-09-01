@@ -22,6 +22,7 @@ set smartcase		" Only case sensitive if a pattern contains an uppercase
 set hlsearch
 set incsearch
 set showmatch		" Jumps back to matching brace when one is inserted
+set relativenumber
 
 " Faster inserts
 inoremap jk <esc>
