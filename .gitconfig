@@ -1,0 +1,12 @@
+[user]
+	name = Jack Farrell
+	email = jackfarrell3030@gmail.com
+	username = jackjf28
+[alias]
+	a = add --all
+	c = commit
+	b = branch
+	o = checkout
+	om = checkout main
+	ob = checkout -b
+	s = status
