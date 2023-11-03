@@ -8,7 +8,6 @@
 colo elflord		" Color scheme
 set colorcolumn=80	" 80 char limit
 
-
 set number  " Show line number
 set encoding=utf-8
 

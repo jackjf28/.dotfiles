@@ -30,7 +30,7 @@ opt.colorcolumn = "80"
 opt.cursorline = true -- highlihgt the current cursor line
 
 -- appearance
-opt.background = "dark" -- colorschemes that can be light or dark with be made dark
+--opt.background = "dark" -- colorschemes that can be light or dark with be made dark
 opt.signcolumn = "yes" -- show sign column so that text doesn't shift
 
 -- backspace
