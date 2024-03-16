@@ -1,2 +1,2 @@
 # .dotfiles
-Configurations I like to use for various softwares
+Configurations I like to use for various software.
