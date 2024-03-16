@@ -36,4 +36,3 @@ vim.keymap.set("n", "<leader>Y", "\"+Y")
 --vim.keymap.set('n', '<leader>ps', function()
 --	builtin.grep_string({ search = fim.fn.input("Grep > ") })
 --end)
-
