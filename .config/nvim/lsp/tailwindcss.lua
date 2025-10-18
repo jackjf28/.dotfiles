@@ -1,127 +1,70 @@
-local util = require 'lspconfig.util'
+local blink = require("blink.cmp")
 
 return {
-  default_config = {
-    cmd = { 'tailwindcss-language-server', '--stdio' },
-    -- filetypes copied and adjusted from tailwindcss-intellisense
+    cmd = { "tailwindcss-language-server", "--stdio" },
     filetypes = {
-      -- html
-      'aspnetcorerazor',
-      'astro',
-      'astro-markdown',
-      'blade',
-      'clojure',
-      'django-html',
-      'htmldjango',
-      'edge',
-      'eelixir', -- vim ft
-      'elixir',
-      'ejs',
-      'erb',
-      'eruby', -- vim ft
-      'gohtml',
-      'gohtmltmpl',
-      'haml',
-      'handlebars',
-      'hbs',
-      'html',
-      'htmlangular',
-      'html-eex',
-      'heex',
-      'jade',
-      'leaf',
-      'liquid',
-      'markdown',
-      'mdx',
-      'mustache',
-      'njk',
-      'nunjucks',
-      'php',
-      'razor',
-      'slim',
-      'twig',
-      -- css
-      'css',
-      'less',
-      'postcss',
-      'sass',
-      'scss',
-      'stylus',
-      'sugarss',
-      -- js
-      'javascript',
-      'javascriptreact',
-      'reason',
-      'rescript',
-      'typescript',
-      'typescriptreact',
-      -- mixed
-      'vue',
-      'svelte',
-      'templ',
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "vue",
+        "svelte",
+        "html",
+        "blade",
+        "css",
+        "scss",
+    },
+    root_markers = {
+        "tailwind.config.js",
+        "tailwind.config.cjs",
+        "tailwind.config.mjs",
+        "tailwind.config.ts",
+        "postcss.config.js",
+        "postcss.config.ts",
+        "package.json",
+        ".git",
     },
     settings = {
-      tailwindCSS = {
-        validate = true,
-        lint = {
-          cssConflict = 'warning',
-          invalidApply = 'error',
-          invalidScreen = 'error',
-          invalidVariant = 'error',
-          invalidConfigPath = 'error',
-          invalidTailwindDirective = 'error',
-          recommendedVariantOrder = 'warning',
-        },
-        classAttributes = {
-          'class',
-          'className',
-          'class:list',
-          'classList',
-          'ngClass',
-        },
-        includeLanguages = {
-          eelixir = 'html-eex',
-          eruby = 'erb',
-          templ = 'html',
-          htmlangular = 'html',
-        },
-      },
-    },
-    on_new_config = function(new_config)
-      if not new_config.settings then
-        new_config.settings = {}
-      end
-      if not new_config.settings.editor then
-        new_config.settings.editor = {}
-      end
-      if not new_config.settings.editor.tabSize then
-        -- set tab size for hover
-        new_config.settings.editor.tabSize = vim.lsp.util.get_effective_tabstop()
-      end
-    end,
-    root_dir = function(fname)
-      local root_file = {
-        'tailwind.config.js',
-        'tailwind.config.cjs',
-        'tailwind.config.mjs',
-        'tailwind.config.ts',
-        'postcss.config.js',
-        'postcss.config.cjs',
-        'postcss.config.mjs',
-        'postcss.config.ts',
-      }
-      root_file = util.insert_package_json(root_file, 'tailwindcss', fname)
-      return util.root_pattern(unpack(root_file))(fname)
-    end,
-  },
-  docs = {
-    description = [[
-https://github.com/tailwindlabs/tailwindcss-intellisense
+        tailwindCSS = {
+            emmetCompletions = true,
+            validate = true,
+            lint = {
+                cssConflict = "warning",
+                invalidApply = "error",
+                invalidScreen = "error",
+                invalidVariant = "error",
+                invalidConfigPath = "error",
+                invalidTailwindDirective = "error",
+                recommendedVariantOrder = "warning",
+            },
+            -- Tailwind class attributes configuration
+            classAttributes = { "class", "className", "classList", "ngClass", ":class" },
 
-Tailwind CSS Language Server can be installed via npm:
-```sh
-npm install -g @tailwindcss/language-server
-```
-]],
-  },
+            -- Experimental regex patterns to detect Tailwind classes in various syntaxes
+            experimental = {
+                classRegex = {
+                    -- tw`...` or tw("...")
+                    "tw`([^`]*)`",
+                    "tw\\(([^)]*)\\)",
+
+                    -- @apply directive inside SCSS / CSS
+                    "@apply\\s+([^;]*)",
+
+                    -- class and className attributes (HTML, JSX, Vue, Blade with :class)
+                    'class="([^"]*)"',
+                    'className="([^"]*)"',
+                    ':class="([^"]*)"',
+
+                    -- Laravel @class directive e.g. @class([ ... ])
+                    "@class\\(([^)]*)\\)",
+                },
+            },
+        },
+    },
+    -- capabilities = vim.tbl_deep_extend(
+    --     "force",
+    --     {},
+    --     vim.lsp.protocol.make_client_capabilities(),
+    --     blink.get_lsp_capabilities()
+    -- ),
 }
