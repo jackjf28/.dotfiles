@@ -6,6 +6,7 @@ return {
 			require("nvim-treesitter.configs").setup({
 				ensure_installed = {
 					"c",
+					"html",
 					"lua",
 					"vim",
 					"vimdoc",
@@ -13,6 +14,7 @@ return {
 					"markdown",
 					"markdown_inline",
 					"go",
+					"gomod",
 					"templ",
 				},
 				auto_install = false,
