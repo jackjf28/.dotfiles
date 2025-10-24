@@ -1,5 +1,4 @@
 local blink = require("blink.cmp")
-
 return {
     cmd = { "tailwindcss-language-server", "--stdio" },
     filetypes = {
@@ -13,6 +12,7 @@ return {
         "blade",
         "css",
         "scss",
+		"templ",
     },
     root_markers = {
         "tailwind.config.js",
@@ -55,8 +55,6 @@ return {
                     'className="([^"]*)"',
                     ':class="([^"]*)"',
 
-                    -- Laravel @class directive e.g. @class([ ... ])
-                    "@class\\(([^)]*)\\)",
                 },
             },
         },

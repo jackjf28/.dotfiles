@@ -1,5 +1,7 @@
-require("config.lazy")
+require("core.mason-path")
 require("core.lsp")
+require("config.autocmds")
+require("config.lazy")
 
 vim.opt.clipboard = "unnamedplus"
 
