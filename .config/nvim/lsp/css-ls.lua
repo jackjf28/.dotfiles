@@ -1,3 +1,4 @@
+local blink = require("blink.cmp")
 -- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/cssls.lua
 
 return {

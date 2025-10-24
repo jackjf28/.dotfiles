@@ -5,11 +5,11 @@ vim.lsp.enable({
   "templ",
   "html-ls",
   "htmx-ls",
---  "css_variables",
---  "cssls",
+  --"emmet-ls",
+--  "css-ls",
 --  "dockerls",
 --  "jsonls",
-  "tailwindcss",
+--  "tailwindcss",
 })
 
 vim.diagnostic.config({
@@ -22,6 +22,9 @@ vim.diagnostic.config({
         border = "rounded",
         source = true,
     },
+	jump = {
+		wrap = true,
+  	},
     signs = {
         text = {
             [vim.diagnostic.severity.ERROR] = "󰅚 ",

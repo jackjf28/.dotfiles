@@ -1,3 +1,4 @@
+local blink = require("blink.cmp")
 return {
   default_config = {
     cmd = { 'vscode-json-language-server', '--stdio' },

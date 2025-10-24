@@ -1,3 +1,4 @@
+local blink = require("blink.cmp")
 ---@brief
 ---
 --- https://templ.guide
