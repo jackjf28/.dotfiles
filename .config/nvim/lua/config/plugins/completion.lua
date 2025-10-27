@@ -3,13 +3,6 @@ return {
     'saghen/blink.cmp',
     dependencies = {
 	  'rafamadriz/friendly-snippets',
-	  {
-	    'L3MON4D3/LuaSnip',
-	    build = 'make install_jsregxp',
-	    config = function ()
-	    	require("luasnip.loaders.from_vscode").lazy_load()
-	    end
-	  }
 	},
 
     version = '1.*',
@@ -49,7 +42,7 @@ return {
 		  show_on_keyword = true,
 		},
 		list = {
-		  max_items = 50
+		  max_items = 200
 		},
 
 	  },

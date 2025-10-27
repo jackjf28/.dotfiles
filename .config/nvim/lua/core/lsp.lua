@@ -4,12 +4,12 @@ vim.lsp.enable({
 --  "yamlls",
   "templ",
   "html-ls",
-  "htmx-ls",
+--  "htmx-ls",
   --"emmet-ls",
 --  "css-ls",
 --  "dockerls",
 --  "jsonls",
---  "tailwindcss",
+  "tailwindcss",
 })
 
 vim.diagnostic.config({
